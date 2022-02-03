@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { ItemComponent } from './components/item/item.component';
 import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,11 @@ import { HttpClientModule } from '@angular/common/http';
       { path: 'home', component: HomeComponent },
       { path: 'item', component: ItemComponent },
       { path: 'user', component: UserComponent },
-    ])
+    ]),
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
