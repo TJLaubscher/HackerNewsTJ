@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   constructor(private http : HttpClient, public apiStore: Store<ApiState>) { }
 
   ngOnInit(): void {
-    // this.apiStore.dispatch(getApiData());
+    this.apiStore.dispatch(getApiData());
 
-    this.apiStore.select<any>('idArray').subscribe(state => {console.log(state);})
+    // this.apiStore.select<any>('idArray').subscribe(state => {console.log(state);})
   }
 
 }
