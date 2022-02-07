@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isCollapsed = false;
+
+  title = 'app';
+  NumberOfIds!: Array<any>
+
+  constructor(private store: Store<any>) {}
+
+  ngOnInit() {
+    //this.store.select('NumberOfIds').subscribe((state => this.NumberOfIds = state))
+  }
 }

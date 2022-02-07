@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
@@ -19,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { StoreModule } from '@ngrx/store';
+import {reducer} from './store/reducers/api.reducer';
 
 registerLocaleData(en);
 
@@ -38,7 +39,7 @@ registerLocaleData(en);
       { path: 'item', component: ItemComponent },
       { path: 'user', component: UserComponent },
     ]),
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducer),
     FormsModule,
     BrowserAnimationsModule,
     IconsProviderModule,

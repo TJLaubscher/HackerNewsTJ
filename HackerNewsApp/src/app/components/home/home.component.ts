@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { getApiData } from 'src/app/store/actions/api.actions';
 import { Store } from '@ngrx/store';
-import { observable } from 'rxjs';
-import { ApiState } from 'src/app/store/reducers/api.reducer';
+import {ApiResponse, ApiValue} from '../../store/Selectors/api.model';
+import * as ApiActions from "../../store/actions/api.actions";
+import {ApiDataService} from '../../Services/apiData.service';
 
 
 @Component({
@@ -12,14 +12,14 @@ import { ApiState } from 'src/app/store/reducers/api.reducer';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  res: any;
+  res!: ApiResponse;
+  resArray!: ApiValue;
 
-  constructor(private http : HttpClient, public apiStore: Store<ApiState>) { }
+  constructor(private http : HttpClient, public apiStore: Store<any>, public apiService: ApiDataService) { }
 
   ngOnInit(): void {
-    this.apiStore.dispatch(getApiData());
-
-    // this.apiStore.select<any>('idArray').subscribe(state => {console.log(state);})
+    this.res = new ApiResponse();
+    this.apiStore.dispatch(new ApiActions.AddApiData(this.res, this.apiService))
   }
 
 }
