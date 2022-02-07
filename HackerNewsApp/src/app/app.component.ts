@@ -15,6 +15,5 @@ export class AppComponent {
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    //this.store.select('NumberOfIds').subscribe((state => this.NumberOfIds = state))
   }
 }
