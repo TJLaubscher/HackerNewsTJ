@@ -18,6 +18,7 @@ export class ApiEffects {
         this.apiDataService.getDataFromApi().pipe(
           map(response => {
             debugger
+            console.log(response.body);
             return getGetApiDataComplete({data: response.body as number []});
           }),
           catchError(err => {
