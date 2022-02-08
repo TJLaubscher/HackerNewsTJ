@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import {ApiResponse, ApiValue} from '../../store/Selectors/api.model';
 import * as ApiActions from "../../store/actions/api.actions";
 import {ApiDataService} from '../../Services/apiData.service';
+import {getGetApiData} from "../../store/actions/api.actions";
 
 
 @Component({
@@ -19,7 +20,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.res = new ApiResponse();
-    this.apiStore.dispatch(new ApiActions.AddApiData(this.res, this.apiService))
+    this.apiStore.dispatch(getGetApiData());
+
+
+    // this.apiStore.dispatch(new ApiActions.AddApiData(this.res, this.apiService))
   }
 
 }
