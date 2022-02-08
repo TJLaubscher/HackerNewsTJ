@@ -20,6 +20,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { StoreModule } from '@ngrx/store';
 import { ApiEffects } from './store/Effects/api.effects';
+import * as fromApi from './store/reducers/api.reducer';
 
 registerLocaleData(en);
 
@@ -40,6 +41,7 @@ registerLocaleData(en);
       { path: 'user', component: UserComponent },
     ]),
     StoreModule.forRoot([]),
+    StoreModule.forFeature(fromApi.apiFeatureKey, fromApi.reducer),
     FormsModule,
     BrowserAnimationsModule,
     IconsProviderModule,
