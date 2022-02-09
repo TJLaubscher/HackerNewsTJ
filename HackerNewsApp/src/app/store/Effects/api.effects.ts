@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, EMPTY, map, mergeMap} from "rxjs";
-import {getGetApiData, getGetApiDataComplete} from "../actions/api.actions";
+import {getGetApiData, getGetApiDataComplete, getGetJobStoriesData, getGetJobStoriesDataComplete} from "../actions/api.actions";
 import {ApiDataService} from "../../Services/apiData.service";
 
 
@@ -26,5 +26,21 @@ export class ApiEffects {
             return EMPTY;
           })
         )
-      )));
+  )));
+
+  getGetJobStoriesData$ = createEffect(() => 
+    this.actions$.pipe(
+    ofType(getGetJobStoriesData),
+    mergeMap(action => 
+      this.apiDataService.getDataForJobStories().pipe(
+        map(response => {
+          return getGetJobStoriesDataComplete({jobStoryId: response.body as number []});
+        }),
+        catchError(err => {
+          console.error(err);
+          return EMPTY;
+        })
+      ))
+  )
+  );
 }

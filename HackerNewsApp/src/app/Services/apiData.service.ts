@@ -12,4 +12,8 @@ export class ApiDataService {
   getDataFromApi() {
     return this.http.get<any>('https://hacker-news.firebaseio.com/v0/topstories.json', {observe: 'response'});
   }
+
+  getDataForJobStories(){
+    return this.http.get<any>('https://hacker-news.firebaseio.com/v0/jobstories.json', {observe: 'response'});
+  }
 }

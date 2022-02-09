@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {select, Store} from '@ngrx/store';
-import {ApiResponse} from '../../store/Selectors/api.model';
-import * as ApiActions from "../../store/actions/api.actions";
 import {ApiDataService} from '../../Services/apiData.service';
 import {getGetApiData} from "../../store/actions/api.actions";
 import {selectApiData} from "../../store/Selectors/api.selectors";
@@ -22,7 +20,6 @@ export class HomeComponent implements OnInit {
     this.apiStore.dispatch(getGetApiData());
     this.apiStore.pipe(select(selectApiData)).subscribe(i => this.res = i);
     debugger
-    // this.apiStore.dispatch(new ApiActions.AddApiData(this.res, this.apiService))
   }
 
 }

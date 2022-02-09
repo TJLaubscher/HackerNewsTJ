@@ -42,6 +42,7 @@ registerLocaleData(en);
     ]),
     StoreModule.forRoot([]),
     StoreModule.forFeature(fromApi.apiFeatureKey, fromApi.reducer),
+    StoreModule.forFeature(fromApi.apiJobStoriesFeatureKey, fromApi.jobStoriesReducer),
     FormsModule,
     BrowserAnimationsModule,
     IconsProviderModule,
