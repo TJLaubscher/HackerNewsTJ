@@ -19,7 +19,8 @@ import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { StoreModule } from '@ngrx/store';
-import {reducer} from './store/reducers/api.reducer';
+import { ApiEffects } from './store/Effects/api.effects';
+import * as fromApi from './store/reducers/api.reducer';
 
 registerLocaleData(en);
 
@@ -39,18 +40,18 @@ registerLocaleData(en);
       { path: 'item', component: ItemComponent },
       { path: 'user', component: UserComponent },
     ]),
-    StoreModule.forRoot(reducer),
+    StoreModule.forRoot([]),
+    StoreModule.forFeature(fromApi.apiFeatureKey, fromApi.reducer),
+    StoreModule.forFeature(fromApi.apiJobStoriesFeatureKey, fromApi.jobStoriesReducer),
     FormsModule,
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    EffectsModule.forRoot([ApiEffects])
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-function reducers(reducers: any, arg1: { metaReducers: any; }): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
-  throw new Error('Function not implemented.');
-}
 

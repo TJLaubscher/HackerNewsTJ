@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { Store } from '@ngrx/store';
-import {ApiResponse, ApiValue} from '../../store/Selectors/api.model';
-import * as ApiActions from "../../store/actions/api.actions";
+import {select, Store} from '@ngrx/store';
 import {ApiDataService} from '../../Services/apiData.service';
+import {getGetApiData} from "../../store/actions/api.actions";
+import {selectApiData} from "../../store/Selectors/api.selectors";
 
 
 @Component({
@@ -12,14 +12,14 @@ import {ApiDataService} from '../../Services/apiData.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  res!: ApiResponse;
-  resArray!: ApiValue;
+  res: number[] | undefined;
 
   constructor(private http : HttpClient, public apiStore: Store<any>, public apiService: ApiDataService) { }
 
   ngOnInit(): void {
-    this.res = new ApiResponse();
-    this.apiStore.dispatch(new ApiActions.AddApiData(this.res, this.apiService))
+    this.apiStore.dispatch(getGetApiData());
+    this.apiStore.pipe(select(selectApiData)).subscribe(i => this.res = i);
+    debugger
   }
 
 }
