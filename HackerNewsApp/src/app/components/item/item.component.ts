@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { Store, select } from '@ngrx/store';
 import {ApiDataService} from '../../Services/apiData.service';
 import {getGetJobStoriesData} from '../../store/actions/api.actions';
-import { selectJobStoriesApiData } from 'src/app/store/Selectors/api.selectors';
+import { selectJobStoriesApiData } from 'src/app/store/Selectors/api.jobStoriesSelector';
 
 @Component({
   selector: 'app-item',

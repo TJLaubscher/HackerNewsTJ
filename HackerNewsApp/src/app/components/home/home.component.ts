@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {select, Store} from '@ngrx/store';
 import {ApiDataService} from '../../Services/apiData.service';
 import {getGetApiData} from "../../store/actions/api.actions";
-import {selectApiData} from "../../store/Selectors/api.selectors";
+import {selectApiData} from '../../store/Selectors/api.topStoriesSelector';
 
 
 @Component({

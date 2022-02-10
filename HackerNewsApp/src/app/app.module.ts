@@ -20,7 +20,8 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { StoreModule } from '@ngrx/store';
 import { ApiEffects } from './store/Effects/api.effects';
-import * as fromApi from './store/reducers/api.reducer';
+import * as topStoryReducers from './store/reducers/api.topStoriesReducer';
+import * as jobStoryReducers from  './store/reducers/api.jobStoriesReducer';
 
 registerLocaleData(en);
 
@@ -41,8 +42,8 @@ registerLocaleData(en);
       { path: 'user', component: UserComponent },
     ]),
     StoreModule.forRoot([]),
-    StoreModule.forFeature(fromApi.apiFeatureKey, fromApi.reducer),
-    StoreModule.forFeature(fromApi.apiJobStoriesFeatureKey, fromApi.jobStoriesReducer),
+    StoreModule.forFeature(topStoryReducers.apiFeatureKey, topStoryReducers.topStoryreducer),
+    StoreModule.forFeature(jobStoryReducers.apiJobStoriesFeatureKey, jobStoryReducers.jobStoriesReducer),
     FormsModule,
     BrowserAnimationsModule,
     IconsProviderModule,
